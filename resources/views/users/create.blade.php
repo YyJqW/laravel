@@ -8,6 +8,7 @@
                 <h5>注册</h5>
             </div>
             <div class="card-body">
+                @include('shared._erro')
     <form method="post" action="{{route('users.store')}}">
         {{csrf_field()}}
         <div class="form-group">
