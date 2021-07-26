@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 use Auth;
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',[
+                'except'=>['show','create','store']
+            ]
+        );
+        $this->middleware('guest',[
+            'only'=>['create']
+        ]);
+    }
     public function create()
     {
         return view('users.create');
@@ -33,6 +43,24 @@ class UsersController extends Controller
     }
     public function edit(User $user)
     {
+        $this->authorize('update',$user);
         return view('users.edit',compact('user'));
+    }
+    public function update(User $user,Request $request)
+    {
+        $this->authorize('update',$user);
+        $this->validate($request,[
+            'name'=>'required|max:50',
+            'password'=>'nullable|confirmed|min:6'
+        ]);
+        $data=[];
+        $data['name']=$request->name;
+        if ($request->password)
+        {
+            $data['password']=bcrypt($request->password);
+        }
+        $user->update($data);
+        session()->flash('success','用户信息更新成功');
+        return view('users.show',compact('user'));
     }
 }

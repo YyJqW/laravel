@@ -1,7 +1,7 @@
 @extends('layout.default')
 @section('title, 编辑')
 
-@session('content')
+@section('content')
     <div class="offset-md-2 col-md-8">
         <div class="card">
             <div class="card-header">
