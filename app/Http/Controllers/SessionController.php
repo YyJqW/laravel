@@ -27,6 +27,6 @@ class SessionController extends Controller
             return redirect()->back()->withInput();
         }
 
-        return; 
+        return;
     }
 }
