@@ -7,8 +7,8 @@
 <h1>您的账号正在通过邮箱找回密码</h1>
 <p>
     点击下面的内容完成密码重置
-    <a href="{{route('pwd.reset',$token)}}">
-        {{route('pwd.reset',$token)}}
+    <a href="{{route('pwd.reset',[$token,$email])}}">
+        {{route('pwd.reset',[$token,$email])}}
     </a>
 </p>
 <p>
