@@ -24,3 +24,8 @@ Route::post('login','SessionController@store')->name('login');
 Route::delete('logout','SessionController@destroy')->name('logout');
 
 Route::get('signup/confirm/{token}','UsersController@confirm')->name('confirm');
+
+Route::get('pwd/reset','pwdController@requestForm')->name('pwd.request');
+Route::post('pwd/email','pwdController@sendLink')->name('pwd.post');
+Route::get('pwd/reset/{token}','pwdController@resetForm')->name('pwd.reset');
+Route::post('pwd/reset','pwdController@reset')->name('pwd.update');
