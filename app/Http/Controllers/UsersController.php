@@ -63,4 +63,9 @@ class UsersController extends Controller
         session()->flash('success','用户信息更新成功');
         return view('users.show',compact('user'));
     }
+    public function index()
+    {
+        $users = User::paginate(6);
+        return view('users.index',compact('users'));
+    }
 }
