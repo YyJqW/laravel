@@ -24,9 +24,18 @@ class SessionController extends Controller
         ]);
         if (Auth::attempt($credential,$request->has('remember')))
         {
-            session()->flash('success','欢迎回来');
-            $fallback=route('users.show',[Auth::user()]);
-            return redirect()->intended($fallback);
+            if(Auth::user()->activated)
+            {
+                session()->flash('success','欢迎回来');
+                $fallback=route('users.show',[Auth::user()]);
+                return redirect()->intended($fallback);
+            }
+            else
+            {
+                Auth::logout();
+                session()->flash('warning','账号未激活，请激活账号');
+                return redirect('/');
+            }
         }
         else
         {
