@@ -29,3 +29,5 @@ Route::get('pwd/reset','pwdController@requestForm')->name('pwd.request');
 Route::post('pwd/email','pwdController@sendLink')->name('pwd.post');
 Route::get('pwd/reset/{token}/{email}','pwdController@resetForm')->name('pwd.reset');
 Route::post('pwd/reset','pwdController@reset')->name('pwd.update');
+
+Route::resource('statuses','StatusesController',['only'=>['store','destroy']]);
