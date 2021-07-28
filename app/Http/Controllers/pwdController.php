@@ -12,6 +12,13 @@ use Carbon\Carbon;
 
 class pwdController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('throttle:2,1',[
+            'only'=>['sendLink']
+        ]);
+    }
+
     public function requestForm()
     {
         return view('auth.pwd.FormPage');
