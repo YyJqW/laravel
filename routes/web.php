@@ -34,3 +34,6 @@ Route::resource('statuses','StatusesController',['only'=>['store','destroy']]);
 
 Route::get('users/{user}/following','UsersController@following')->name('following');
 Route::get('users/{user}/fans','UsersController@fans')->name('fans');
+
+Route::post('users/follow/{user}','FollowController@store')->name('follow.store');
+Route::delete('users/follow/{user}','FollowController@destroy')->name('follow.destroy');
