@@ -100,4 +100,16 @@ class UsersController extends Controller
             $message->to($to)->subject($subject);
         });
     }
+    public function following(User $user)
+    {
+        $users=$user->following()->paginate(30);
+        $title=$user->name."关注的人";
+        return view('users.show_follow',compact('users','title'));
+    }
+    public function fans(User $user)
+    {
+        $users=$user->fans()->paginate(30);
+        $title=$user->name."的粉丝";
+        return view('users.show_follow',compact('users','title'));
+    }
 }

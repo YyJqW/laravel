@@ -1,5 +1,5 @@
 @extends('layout.default')
-@section('title, 重置密码')
+@section('title', '重置密码')
 @section('content')
     <div class="offset-md-1 col-md-10">
         <div class="card">

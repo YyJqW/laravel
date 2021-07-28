@@ -1,5 +1,5 @@
 @extends('layout.default')
-@section('title, 编辑')
+@section('title', '编辑')
 
 @section('content')
     <div class="offset-md-2 col-md-8">

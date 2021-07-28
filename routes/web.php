@@ -31,3 +31,6 @@ Route::get('pwd/reset/{token}/{email}','pwdController@resetForm')->name('pwd.res
 Route::post('pwd/reset','pwdController@reset')->name('pwd.update');
 
 Route::resource('statuses','StatusesController',['only'=>['store','destroy']]);
+
+Route::get('users/{user}/following','UsersController@following')->name('following');
+Route::get('users/{user}/fans','UsersController@fans')->name('fans');
