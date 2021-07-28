@@ -71,6 +71,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class,'followers','follower_id','user_id');
     }
+    public function like()
+    {
+        return $this->belongsToMany(UserLike::class,'user_likes','user_id','status_id');
+    }
     public function follow($user_ids)
     {
         if(!is_array($user_ids))

@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class UserLike extends Model
 {
-    protected $fillable=['content'];
     use HasFactory;
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
-    public function like()
+    public function status()
     {
-        return $this->hasMany(UserLike::class);
+        return $this->belongsTo(Status::class);
     }
 }
