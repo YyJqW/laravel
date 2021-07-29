@@ -13,8 +13,8 @@ class Status extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function like()
+    public function UserLike()
     {
-        return $this->hasMany(UserLike::class);
+        return $this->belongsToMany(User::class,'user_likes','status_id','user_id');
     }
 }

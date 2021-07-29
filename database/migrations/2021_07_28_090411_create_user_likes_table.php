@@ -17,7 +17,6 @@ class CreateUserLikesTable extends Migration
             $table->id();
             $table->integer('status_id')->index();
             $table->integer('user_id')->index();
-            $table->boolean('like');
             $table->timestamps();
         });
     }

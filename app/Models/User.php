@@ -71,9 +71,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class,'followers','follower_id','user_id');
     }
-    public function like()
+    public function UserLike()
     {
-        return $this->belongsToMany(UserLike::class,'user_likes','user_id','status_id');
+        return $this->belongsToMany(Status::class,'user_likes','user_id','status_id');
     }
     public function follow($user_ids)
     {
@@ -94,5 +94,25 @@ class User extends Authenticatable
     public function isFollowing($user_id)
     {
         return $this->fans->contains($user_id);
+    }
+    public function liked($status_id)
+    {
+        return $this->UserLike->contains($status_id);
+    }
+    public function like($status_ids)
+    {
+        if(!is_array($status_ids))
+        {
+            $status_ids=compact('status_ids');
+        }
+        $this->UserLike()->sync($status_ids);
+    }
+    public function unlike($status_ids)
+    {
+        if(!is_array($status_ids))
+        {
+            $status_ids=compact('status_ids');
+        }
+        $this->UserLike()->detach($status_ids);
     }
 }
