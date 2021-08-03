@@ -45,3 +45,6 @@ Route::get('/liked/{status}','UserLikeController@liked')->name('liked');
 Route::get('test','StaticPagesController@test');
 
 Route::get('status/{status}','StatusesController@show')->name('detail');
+
+Route::post('status/comment/{status}','commentController@store')->name('comment');
+Route::delete('status/comment/{status}','commentController@destroy');

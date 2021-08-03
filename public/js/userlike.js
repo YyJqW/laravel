@@ -24,20 +24,5 @@ function urlsend(id)
 
             }
         })
-
-        // if(!liked)
-        // {
-        //     $.ajax({url:"/like/"+id,success:function ()
-        //         {
-        //             $("#button"+id).innerHTML="<i class=\"bi bi-hand-thumbs-up-fill\"></i>";
-        //         }})
-        // }
-        // else
-        // {
-        //     $.ajax({url:"/unlike/"+id,success:function ()
-        //         {
-        //             $("#button"+id).innerHTML="<i class=\"bi bi-hand-thumbs-up\"></i>";
-        //         }})
-        // }
     });
 }

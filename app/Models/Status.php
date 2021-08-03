@@ -17,4 +17,8 @@ class Status extends Model
     {
         return $this->belongsToMany(User::class,'user_likes','status_id','user_id');
     }
+    public function UserComment()
+    {
+        return $this->belongsToMany(User::class,'user_comments','status_id','user_id');
+    }
 }

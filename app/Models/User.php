@@ -75,6 +75,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Status::class,'user_likes','user_id','status_id');
     }
+    public function UserComment()
+    {
+        return $this->belongsToMany(Status::class,'user_comments','user_id','status_id');
+    }
     public function follow($user_ids)
     {
         if(!is_array($user_ids))
@@ -114,5 +118,21 @@ class User extends Authenticatable
             $status_ids=compact('status_ids');
         }
         $this->UserLike()->detach($status_ids);
+    }
+    public function addComment($status_ids)
+    {
+        if(!is_array($status_ids))
+        {
+            $status_ids=compact('status_ids');
+        }
+        $this->UserComment()->attach($status_ids);
+    }
+    public function removeComment($status_ids)
+    {
+        if(!is_array($status_ids))
+        {
+            $status_ids=compact('status_ids');
+        }
+        $this->UserComment()->detach($status_ids);
     }
 }
