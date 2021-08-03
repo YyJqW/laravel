@@ -11,7 +11,6 @@ class StatusesController extends Controller
     {
         $this->middleware('auth');
     }
-
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -29,5 +28,9 @@ class StatusesController extends Controller
         $status->delete();
         session()->flash('success','微博删除成功');
         return redirect()->back();
+    }
+    public function show(Status $status)
+    {
+        return view('status.detail',compact('status'));
     }
 }

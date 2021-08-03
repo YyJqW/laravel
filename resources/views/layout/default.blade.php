@@ -4,6 +4,7 @@
     <title>@yield('title', 'Laravel') - Laravel 入门教程</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="{{ URL::asset('/js/userlike.js') }}"></script>
 </head>
 <body>
 

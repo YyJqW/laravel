@@ -38,7 +38,10 @@ Route::get('users/{user}/fans','UsersController@fans')->name('fans');
 Route::post('users/follow/{user}','FollowController@store')->name('follow.store');
 Route::delete('users/follow/{user}','FollowController@destroy')->name('follow.destroy');
 
-Route::get('like/{status}','UserLikeController@store')->name('like');
-Route::get('unlike/{status}','UserLikeController@cancle')->name('unlike');
+Route::get('/like/{status}','UserLikeController@store')->name('like');
+Route::get('/unlike/{status}','UserLikeController@cancle')->name('unlike');
+Route::get('/liked/{status}','UserLikeController@liked')->name('liked');
 
 Route::get('test','StaticPagesController@test');
+
+Route::get('status/{status}','StatusesController@show')->name('detail');

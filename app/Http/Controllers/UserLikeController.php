@@ -28,4 +28,10 @@ class UserLikeController extends Controller
         }
         return redirect()->back();
     }
+    public function liked(int $id)
+    {
+        return response()->json([
+            'data' =>  Auth::user()->liked($id)?true:false
+        ]);
+    }
 }
