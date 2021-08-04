@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 class commentController extends Controller
 {
-    public function store(Request $request,$status_id)
+    public function store(Request $request)
     {
         $request->validate([
-            'comment'=>'required|max:255'
+            'comment'=>'required|max:255',
+            'status_id'=>'required'
         ]);
-        $data=[];
-        $data['comment']=$request->comment;
-        if($data['comment']!=='')
+        if($request->comment!=='')
         {
-            Auth::user()->addComment($status_id);
-            Auth::user()->UserComment()->update($data);
+            Auth::user()->UserComment()->create([
+                'content'=>$request->comment,
+                'status_id'=>$request->status_id]);
         }
     }
 }

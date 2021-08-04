@@ -21,7 +21,7 @@ function urlsend(id)
                 }
             },
             error: function (error) {
-
+                console.log(error)
             }
         })
     });

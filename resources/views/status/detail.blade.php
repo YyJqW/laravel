@@ -13,7 +13,8 @@
             </p>
         </div>
     </div>
-    <script>addComment({{$status->id}})</script>
+    <script>addComment({{$status->id}},"{{Auth::user()->name}}")</script>
+    @include('shared._comment')
     <div class="input-group mb-3">
         <input type="text" class="form-control-lg" placeholder="说点啥" aria-label="Recipient's username" aria-describedby="button-addon2" id="comment">
         <button class="btn btn-outline-secondary" type="button" id="commentSubmit">评论</button>
