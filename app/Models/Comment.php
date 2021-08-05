@@ -17,4 +17,8 @@ class Comment extends Model
     {
         return $this->belongsTo(Status::class);
     }
+    public function UserLikeComment()
+    {
+        return $this->belongsToMany(User::class,'user_likes_comments','comment_id','user_id');
+    }
 }

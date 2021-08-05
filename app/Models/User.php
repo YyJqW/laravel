@@ -75,6 +75,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Status::class,'user_likes','user_id','status_id');
     }
+    public function UserLikeComment()
+    {
+        return $this->belongsToMany(Comment::class,'user_likes_comments','user_id','comment_id');
+    }
     public function UserComment()
     {
         return $this->hasMany(Comment::class);
@@ -103,6 +107,10 @@ class User extends Authenticatable
     {
         return $this->UserLike->contains($status_id);
     }
+    public function liked_comment($comment_id)
+    {
+        return $this->UserLikeComment->contains($comment_id);
+    }
     public function like($status_ids)
     {
         if(!is_array($status_ids))
@@ -119,28 +127,20 @@ class User extends Authenticatable
         }
         $this->UserLike()->detach($status_ids);
     }
-    public function addComment($status_ids,$content)
+    public function like_comment($comment_ids)
     {
-        if(!is_array($status_ids))
+        if(!is_array($comment_ids))
         {
-            $status_ids=compact('status_ids');
+            $comment_ids=compact('comment_ids');
         }
-        $this->UserComment()->attach($status_ids,['content'=>$content,'parent_id'=>0]);
+        $this->UserLikeComment()->sync($comment_ids);
     }
-    public function addSonComment($status_ids,$content,$parent_id)
+    public function unlike_comment($comment_ids)
     {
-        if(!is_array($status_ids))
+        if(!is_array($comment_ids))
         {
-            $status_ids=compact('status_ids');
+            $comment_ids=compact('comment_ids');
         }
-        $this->UserComment()->attach($status_ids);
-    }
-    public function removeComment($status_ids)
-    {
-        if(!is_array($status_ids))
-        {
-            $status_ids=compact('status_ids');
-        }
-        $this->UserComment()->detach($status_ids);
+        $this->UserLikeComment()->detach($comment_ids);
     }
 }

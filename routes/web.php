@@ -41,10 +41,14 @@ Route::delete('users/follow/{user}','FollowController@destroy')->name('follow.de
 Route::get('/like/{status}','UserLikeController@store')->name('like');
 Route::get('/unlike/{status}','UserLikeController@cancle')->name('unlike');
 Route::get('/liked/{status}','UserLikeController@liked')->name('liked');
+Route::get('/like_comment/{comment}','UserLikeController@store_comment')->name('like_comment');
+Route::get('/unlike_comment/{comment}','UserLikeController@cancle_comment')->name('unlike_comment');
+Route::get('/liked_comment/{comment}','UserLikeController@liked_comment')->name('liked_comment');
 
 Route::get('test','StaticPagesController@test');
 
 Route::get('status/{status}','StatusesController@show')->name('detail');
 
-Route::post('status/comment/{status}','commentController@store')->name('comment');
-Route::delete('status/comment/{status}','commentController@destroy');
+Route::get('/comment/count','commentController@comment_count');
+Route::post('/comment/{status}','commentController@store')->name('comment');
+Route::delete('/comment/{status}','commentController@destroy');

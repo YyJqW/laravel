@@ -19,6 +19,6 @@ class Status extends Model
     }
     public function UserComment()
     {
-        return $this->hasMany(Comment::class,'comment_id','status_id');
+        return $this->hasMany(Comment::class);
     }
 }

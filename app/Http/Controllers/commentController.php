@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -20,5 +21,13 @@ class commentController extends Controller
                 'content'=>$request->comment,
                 'status_id'=>$request->status_id]);
         }
+    }
+    public function comment_count()
+    {
+        $comment=new Comment;
+        $count=count($comment->all());
+        return response()->json([
+            'count'=>$count
+        ]);
     }
 }
