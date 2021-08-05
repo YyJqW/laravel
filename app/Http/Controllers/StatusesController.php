@@ -31,14 +31,19 @@ class StatusesController extends Controller
         session()->flash('success','微博删除成功');
         return redirect()->back();
     }
+//    public function show(Status $status,Comment $comment)
+//    {
+//        $sql=DB::table('comments')->select('user_id')->where('status_id',$status->id);
+//        $comments=DB::table('comments')->select('content')->where('status_id',$status->id)->get();
+//        $names=DB::table('users')->select('name')->joinSub($sql,'comments',function($join){
+//            $join->on('users.id','=','comments.user_id');
+//        })->get();
+//        $ids=DB::table('comments')->select('id')->get();
+//        return view('status.detail',compact('status','comments','names','ids','comment'));
+//    }
     public function show(Status $status)
     {
-        $sql=DB::table('comments')->select('user_id')->where('status_id',$status->id);
-        $comments=DB::table('comments')->select('content')->where('status_id',$status->id)->get();
-        $names=DB::table('users')->select('name')->joinSub($sql,'comments',function($join){
-            $join->on('users.id','=','comments.user_id');
-        })->get();
-        $ids=DB::table('comments')->select('id')->get();
-        return view('status.detail',compact('status','comments','names','ids'));
+        $comments=$status->UserComment->all();
+        return view('status.detail',compact('status','comments'));
     }
 }

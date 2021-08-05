@@ -21,4 +21,11 @@ class Status extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function liked_count()
+    {
+        $count=count($this->UserLike->all());
+        return response()->json([
+            'count'=>$count
+        ]);
+    }
 }

@@ -44,11 +44,13 @@ Route::get('/liked/{status}','UserLikeController@liked')->name('liked');
 Route::get('/like_comment/{comment}','UserLikeController@store_comment')->name('like_comment');
 Route::get('/unlike_comment/{comment}','UserLikeController@cancle_comment')->name('unlike_comment');
 Route::get('/liked_comment/{comment}','UserLikeController@liked_comment')->name('liked_comment');
+Route::get('/like/count/status/{status}','UserLikeController@status_liked_count')->name('status_liked_count');
+Route::get('/like/count/comment/{comment}','UserLikeController@comment_liked_count')->name('comment_liked_count');
+
 
 Route::get('test','StaticPagesController@test');
 
 Route::get('status/{status}','StatusesController@show')->name('detail');
 
-Route::get('/comment/count','commentController@comment_count');
 Route::post('/comment/{status}','commentController@store')->name('comment');
 Route::delete('/comment/{status}','commentController@destroy');

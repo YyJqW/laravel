@@ -117,7 +117,7 @@ class User extends Authenticatable
         {
             $status_ids=compact('status_ids');
         }
-        $this->UserLike()->sync($status_ids);
+        $this->UserLike()->attach($status_ids);
     }
     public function unlike($status_ids)
     {
@@ -133,7 +133,7 @@ class User extends Authenticatable
         {
             $comment_ids=compact('comment_ids');
         }
-        $this->UserLikeComment()->sync($comment_ids);
+        $this->UserLikeComment()->attach($comment_ids);
     }
     public function unlike_comment($comment_ids)
     {

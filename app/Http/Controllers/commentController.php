@@ -22,12 +22,4 @@ class commentController extends Controller
                 'status_id'=>$request->status_id]);
         }
     }
-    public function comment_count()
-    {
-        $comment=new Comment;
-        $count=count($comment->all());
-        return response()->json([
-            'count'=>$count
-        ]);
-    }
 }

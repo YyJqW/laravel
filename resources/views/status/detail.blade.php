@@ -11,9 +11,11 @@
             <p style="font-size:20px">
                 {{ $status->content }}
             </p>
+                @include('shared._user_like')
         </div>
     </div>
     <script>addComment({{$status->id}},"{{Auth::user()->name}}")</script>
+{{--    {{dd($comments)}}--}}
     @include('shared._comment')
     <div class="input-group mb-3">
         <input type="text" class="form-control-lg" placeholder="说点啥" aria-label="Recipient's username" aria-describedby="button-addon2" id="comment">

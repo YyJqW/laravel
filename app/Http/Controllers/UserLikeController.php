@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Status;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Auth;
 class UserLikeController extends Controller
@@ -56,5 +57,15 @@ class UserLikeController extends Controller
         return response()->json([
             'data' =>  Auth::user()->liked_comment($id)?true:false
         ]);
+    }
+    public function comment_liked_count(Comment $comment)
+    {
+        $count=$comment->liked_count();
+        return $count;
+    }
+    public function status_liked_count(Status $status)
+    {
+        $count=$status->liked_count();
+        return $count;
     }
 }

@@ -1,11 +1,14 @@
 @if(Auth::check())
-@if(Auth::user()->liked($status->id))
-    <button class="btn btn-light" onclick="urlsend({{$status->id}})">
-        <i id="button{{$status->id}}" class="bi bi-hand-thumbs-up-fill"></i>
+    <button class="btn btn-light position-relative" onclick="urlsend({{$status->id}})">
+        @if(Auth::user()->liked($status->id))
+            <i id="button{{$status->id}}" class="bi bi-hand-thumbs-up-fill"></i>
+        @else
+            <i id="button{{$status->id}}" class="bi bi-hand-thumbs-up"></i>
+        @endif
+        @if($status->liked_count()->getData()->count>0)
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary text-light" id="badge{{$status->id}}">
+                 {{$status->liked_count()->getData()->count}}
+            </span>
+        @endif
     </button>
-@else
-    <button class="btn btn-light" onclick="urlsend({{$status->id}})">
-        <i id="button{{$status->id}}" class="bi bi-hand-thumbs-up"></i>
-    </button>
-@endif
 @endif

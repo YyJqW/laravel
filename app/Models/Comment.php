@@ -21,4 +21,11 @@ class Comment extends Model
     {
         return $this->belongsToMany(User::class,'user_likes_comments','comment_id','user_id');
     }
+    public function liked_count()
+    {
+        $count=count($this->UserLikeComment->all());
+        return response()->json([
+            'count'=>$count
+        ]);
+    }
 }
