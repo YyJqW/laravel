@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -19,7 +20,16 @@ class commentController extends Controller
         {
             Auth::user()->UserComment()->create([
                 'content'=>$request->comment,
-                'status_id'=>$request->status_id]);
+                'status_id'=>$request->status_id,
+                'parent'=>$request->parent
+                ]);
         }
+    }
+    public function count(Status $status)
+    {
+        $count=$status->UserComment->last()->id;
+        return response()->json([
+            'count'=>$count
+        ]);
     }
 }

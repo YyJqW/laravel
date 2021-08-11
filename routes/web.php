@@ -52,5 +52,6 @@ Route::get('test','StaticPagesController@test');
 
 Route::get('status/{status}','StatusesController@show')->name('detail');
 
+Route::get('/comment/count/{status}','commentController@count');
 Route::post('/comment/{status}','commentController@store')->name('comment');
 Route::delete('/comment/{status}','commentController@destroy');

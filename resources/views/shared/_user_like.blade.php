@@ -1,5 +1,5 @@
 @if(Auth::check())
-    <button class="btn btn-light position-relative" onclick="urlsend({{$status->id}})">
+    <button class="btn btn-light position-relative float-right" onclick="urlsend({{$status->id}})">
         @if(Auth::user()->liked($status->id))
             <i id="button{{$status->id}}" class="bi bi-hand-thumbs-up-fill"></i>
         @else

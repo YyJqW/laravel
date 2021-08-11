@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Comment extends Model
 {
-    protected $fillable=['content','status_id'];
+    protected $fillable=['content','status_id','parent'];
     use HasFactory;
     public function user()
     {
@@ -27,5 +27,9 @@ class Comment extends Model
         return response()->json([
             'count'=>$count
         ]);
+    }
+    public function findSon()
+    {
+        return $this->where('parent',$this->id)->get();
     }
 }
