@@ -30,6 +30,8 @@ class Comment extends Model
     }
     public function findSon()
     {
-        return $this->where('parent',$this->id)->get();
+        $sons=$this->where('parent',$this->id)->paginate(5,['*'],'cpage'.$this->id);
+//        $sons->withPath('./son');
+        return $sons;
     }
 }

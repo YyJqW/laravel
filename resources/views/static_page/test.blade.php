@@ -36,3 +36,6 @@
     </div>
 </div>
 </body>
+{{--<script>--}}
+{{--    $("body").html("<div>hahhaha</div><script>console.log(1)<\/script>");--}}
+{{--</script>--}}

@@ -43,7 +43,12 @@ class StatusesController extends Controller
 //    }
     public function show(Status $status)
     {
-        $comments=$status->UserComment->all();
+        $comments=$status->UserComment()->with('user')->paginate(5,['*'],'spage');
         return view('status.detail',compact('status','comments'));
+    }
+    public function showComment(Status $status)
+    {
+        $comments=$status->UserComment()->with('user')->paginate(5,['*'],'spage');
+        return $comments;
     }
 }

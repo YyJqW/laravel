@@ -14,7 +14,6 @@
                 @include('shared._user_like')
         </div>
     </div>
-    <script>addComment({{$status->id}},"{{Auth::user()->name}}")</script>
 {{--    {{dd($comments)}}--}}
     @include('shared._comment')
     <div class="input-group mb-3">

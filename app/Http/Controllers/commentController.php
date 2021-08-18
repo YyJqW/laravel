@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Illuminate\Pagination\Paginator;
+
 class commentController extends Controller
 {
     public function store(Request $request)
@@ -32,4 +34,15 @@ class commentController extends Controller
             'count'=>$count
         ]);
     }
+    public function getPage(Paginator $paginator,int $page)
+    {
+        return $paginator;
+    }
+    public function findSon(int $id)
+    {
+        $sons=DB::table('comments')->where('parent',$id)->paginate(5,['*'],'cpage'.$id);
+//        $sons->withPath('./son');
+        return $sons;
+    }
+
 }

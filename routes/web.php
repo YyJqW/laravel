@@ -55,3 +55,6 @@ Route::get('status/{status}','StatusesController@show')->name('detail');
 Route::get('/comment/count/{status}','commentController@count');
 Route::post('/comment/{status}','commentController@store')->name('comment');
 Route::delete('/comment/{status}','commentController@destroy');
+
+Route::get('/sonPagination/{comment}','commentController@findSon');
+Route::get('/Pagination/{status}','StatusesController@showComment');
