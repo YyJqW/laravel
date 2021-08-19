@@ -81,11 +81,10 @@ function addSonComment(id,user)
             type: 'post',
             success:function (_data)
             {
-                let commentCard=$("#sonComment"+id);
+                let commentCard=$("#sonCommentCard"+id);
                 comment.val("");
-                console.log(commentCard);
-                commentCard.before(
-                    "<div class=\"card-body border\">\n" +
+                commentCard.find(".pagination").before(
+                    "<div class=\"card-body \">\n" +
                     "                                    <p>\n" +
                     user+
                     ":"+
